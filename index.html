@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Form Filler - 智能表单填充助手</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./icon-theme.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icon-16.png">
+    <link rel="apple-touch-icon" sizes="48x48" href="./icon-48.png">
+    
     <style>
         * {
             margin: 0;
@@ -67,13 +75,25 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #2563eb, #c026d3);
+            background-image: url('./icon-theme.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 20px;
+        }
+
+        /* 为了确保SVG图标在不同背景下都能显示，添加一个备用样式 */
+        .logo-icon::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background-image: url('./icon-theme.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
         .nav-links {
@@ -388,12 +408,13 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
         <nav class="nav container">
             <div class="logo">
-                <div class="logo-icon">✨</div>
+                <div class="logo-icon"></div>
                 <span>Smart Form Filler</span>
             </div>
             <div class="nav-links">
@@ -569,7 +590,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="logo">
-                    <div class="logo-icon">✨</div>
+                    <div class="logo-icon"></div>
                     <span>Smart Form Filler</span>
                 </div>
                 <div class="footer-links">
@@ -588,7 +609,7 @@
     <script>
         // 导航栏滚动效果
         const header = document.querySelector('.header');
-        
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 header.classList.add('scrolled');
@@ -635,4 +656,5 @@
         });
     </script>
 </body>
+
 </html>
