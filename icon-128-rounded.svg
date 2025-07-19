@@ -1,0 +1,75 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 主渐变 -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1d4ed8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c026d3;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 白色半透明渐变 -->
+    <linearGradient id="whiteGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.85" />
+    </linearGradient>
+    
+    <!-- 装饰渐变 -->
+    <radialGradient id="decorGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.05" />
+    </radialGradient>
+    
+    <!-- 圆角遮罩 - 确保圆角效果 -->
+    <clipPath id="roundedClip">
+      <rect width="128" height="128" rx="28" ry="28"/>
+    </clipPath>
+    
+    <!-- 阴影滤镜 -->
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#1e3a8a" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  
+  <!-- 整体容器，应用圆角遮罩 -->
+  <g clip-path="url(#roundedClip)">
+    <!-- 背景 - 圆角矩形 -->
+    <rect width="128" height="128" rx="28" ry="28" fill="url(#mainGradient)" filter="url(#dropShadow)"/>
+    
+    <!-- 背景装饰圆圈 -->
+    <circle cx="100" cy="28" r="24" fill="url(#decorGradient)"/>
+    <circle cx="28" cy="100" r="20" fill="rgba(255,255,255,0.1)"/>
+    
+    <!-- 主图标容器 -->
+    <g transform="translate(64, 64)">
+      <!-- 图标背景圆 -->
+      <circle cx="0" cy="0" r="24" fill="url(#whiteGradient)" opacity="0.9"/>
+      
+      <!-- Sparkles图标 -->
+      <g fill="#2563eb" stroke="#1d4ed8" stroke-width="0.5">
+        <!-- 主要星形 -->
+        <path d="M 0 -16 L 3 -6 L 12 -8 L 6 -2 L 8 8 L 0 4 L -8 8 L -6 -2 L -12 -8 L -3 -6 Z"/>
+        
+        <!-- 小星星装饰 -->
+        <circle cx="14" cy="-10" r="1.5"/>
+        <circle cx="-12" cy="12" r="1"/>
+        <circle cx="10" cy="14" r="1.2"/>
+        
+        <!-- 连接线 -->
+        <path d="M -6 -2 Q 0 2 6 -2" stroke="#c026d3" stroke-width="1.5" fill="none" opacity="0.8"/>
+      </g>
+      
+      <!-- 速度指示器 -->
+      <g fill="#d946ef" opacity="0.7">
+        <circle cx="20" cy="-8" r="1"/>
+        <circle cx="22" cy="0" r="0.8"/>
+        <circle cx="20" cy="8" r="1"/>
+      </g>
+    </g>
+    
+    <!-- 底部装饰 -->
+    <rect x="0" y="96" width="128" height="32" rx="0" ry="0" fill="rgba(255,255,255,0.1)"/>
+  </g>
+  
+  <!-- 外边框强化圆角效果 -->
+  <rect width="128" height="128" rx="28" ry="28" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+</svg>
