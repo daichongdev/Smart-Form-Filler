@@ -406,6 +406,119 @@
                 text-align: center;
             }
         }
+                /* Contact Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #9ca3af;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #374151;
+        }
+
+        .modal h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1f2937;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 12px;
+            transition: background 0.3s;
+        }
+
+        .contact-item:hover {
+            background: #e2e8f0;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2563eb, #c026d3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1f2937;
+        }
+
+        .contact-details p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        .contact-details a {
+            color: #2563eb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: #1d4ed8;
+        }
+    </style>
     </style>
 </head>
 
@@ -606,6 +719,37 @@
         </div>
     </footer>
 
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3>联系我们</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <h4>邮箱联系</h4>
+                        <p><a href="mailto:daichongdev@gmail.com">support@daichongdev@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💬</div>
+                    <div class="contact-details">
+                        <h4>在线客服</h4>
+                        <p>工作日 9:00-18:00 在线支持</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🐛</div>
+                    <div class="contact-details">
+                        <h4>问题反馈</h4>
+                        <p><a href="https://github.com/daichongdev/Smart-Form-Filler/issues" target="_blank">GitHub Issues</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // 导航栏滚动效果
         const header = document.querySelector('.header');
@@ -654,6 +798,48 @@
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+                // 为所有卡片添加动画
+        document.querySelectorAll('.feature-card, .step, .benefit-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // 联系我们弹框功能
+        const contactBtn = document.getElementById('contactBtn');
+        const contactModal = document.getElementById('contactModal');
+        const modalClose = document.querySelector('.modal-close');
+
+        // 打开弹框
+        contactBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            contactModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // 关闭弹框
+        function closeModal() {
+            contactModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+
+        // 点击背景关闭弹框
+        contactModal.addEventListener('click', function(e) {
+            if (e.target === contactModal) {
+                closeModal();
+            }
+        });
+
+        // ESC键关闭弹框
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && contactModal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+    </script>
     </script>
 </body>
 
