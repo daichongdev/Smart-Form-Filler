@@ -15,37 +15,6 @@
 - **数据导入导出**: 支持备份和恢复
 - **🆕 Google账户同步**: 跨设备数据同步，自动备份
 
-## 🛠️ 开发环境设置
-
-### 安装依赖
-```bash
-npm install
-```
-
-### 开发模式
-```bash
-npm run dev
-```
-
-### 构建生产版本
-```bash
-npm run build
-```
-
-### 构建扩展
-```bash
-chmod +x build.sh
-./build.sh
-```
-
-## 📦 安装扩展
-
-1. 运行 `./build.sh` 构建扩展
-2. 打开Chrome浏览器，进入 `chrome://extensions/`
-3. 开启"开发者模式"
-4. 点击"加载已解压的扩展程序"
-5. 选择 `dist` 文件夹
-
 ## 🎯 主要功能
 
 ### 1. 智能表单识别
@@ -105,29 +74,7 @@ chmod +x build.sh
 - **图标库**: Lucide React
 - **扩展API**: Chrome Extension Manifest V3
 - **同步服务**: Google Identity API + Google Drive API
-
-## 📁 项目结构
-
-\`\`\`
-src/
-├── popup/                 # 弹窗界面
-│   ├── components/       # React组件
-│   ├── App.tsx          # 主应用组件
-│   ├── main.tsx         # 入口文件
-│   └── index.html       # HTML模板
-├── background/           # 后台脚本
-│   └── background.ts    # 后台服务
-├── content/             # 内容脚本
-│   └── content.ts       # 页面注入脚本
-├── utils/               # 工具函数
-│   └── storage.ts       # 存储管理
-├── types/               # 类型定义
-│   └── index.ts         # 通用类型
-├── styles/              # 样式文件
-│   └── globals.css      # 全局样式
-└── manifest.json        # 扩展配置
-\`\`\`
-
+- 
 ## 🔒 安全性
 
 - 所有数据存储在本地
@@ -163,17 +110,5 @@ MIT License
 - **通用登录**: 自动识别各种登录表单
 - **数据管理**: 完善的导入导出功能
 - **设置面板**: 可配置的用户偏好
-
-## 🔧 **开发体验**
-- **热重载**: 开发时自动刷新
-- **类型检查**: 编译时错误检测
-- **代码组织**: 清晰的文件结构
-- **构建优化**: 自动化构建流程
-
-要开始使用新版本，请按照以下步骤：
-
-1. 安装依赖：`npm install`
-2. 构建项目：`./build.sh`
-3. 在Chrome中加载 `dist` 文件夹
 
 这个重构版本保留了所有原有功能，同时提供了更好的用户体验和开发体验！
