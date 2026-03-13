@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Form Filler - 智能表单填充助手</title>
+    <title>Auto Login Pro - 智能自动登录助手 & 表单填充</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./icons/icon-theme.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/icon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/icon-16.png">
+    <link rel="apple-touch-icon" sizes="48x48" href="./icons/icon-48.png">
     <style>
         * {
             margin: 0;
@@ -67,13 +72,14 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #2563eb, #c026d3);
+            background-image: url('./icons/icon-theme.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 20px;
         }
 
         .nav-links {
@@ -122,9 +128,10 @@
 
         .hero .description {
             font-size: 1.1rem;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 40px;
-            opacity: 0.8;
+            opacity: 0.9;
+            line-height: 1.8;
         }
 
         .cta-buttons {
@@ -176,8 +183,18 @@
             text-align: center;
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 60px;
+            margin-bottom: 20px;
             color: #1f2937;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .features-grid {
@@ -225,46 +242,51 @@
             line-height: 1.6;
         }
 
-        /* How it works */
-        .how-it-works {
+        /* Supported Platforms */
+        .platforms {
             background: #f8fafc;
             padding: 80px 0;
         }
 
-        .steps {
+        .platforms-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
+            gap: 30px;
         }
 
-        .step {
-            text-align: center;
+        .platform-category {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #2563eb, #c026d3);
-            color: white;
-            border-radius: 50%;
+        .platform-category h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1f2937;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin: 0 auto 20px;
+            gap: 10px;
         }
 
-        .step h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
+        .platform-list {
+            list-style: none;
+        }
+
+        .platform-list li {
             margin-bottom: 10px;
-            color: #1f2937;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .step p {
-            color: #6b7280;
+        .platform-list li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
         }
 
         /* Benefits */
@@ -277,7 +299,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 60px;
+            margin-top: 40px;
         }
 
         .benefit-item {
@@ -307,6 +329,38 @@
         }
 
         .benefit-content p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* More Features */
+        .more-features {
+            background: #f8fafc;
+            padding: 80px 0;
+        }
+
+        .more-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .more-feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid #6366f1;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .more-feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+
+        .more-feature-card p {
             color: #6b7280;
             font-size: 0.95rem;
         }
@@ -393,13 +447,13 @@
     <header class="header">
         <nav class="nav container">
             <div class="logo">
-                <div class="logo-icon">✨</div>
-                <span>Smart Form Filler</span>
+                <div class="logo-icon"></div>
+                <span>Auto Login Pro</span>
             </div>
             <div class="nav-links">
-                <a href="#features">功能特色</a>
-                <a href="#how-it-works">使用方法</a>
-                <a href="#benefits">优势</a>
+                <a href="#highlights">核心亮点</a>
+                <a href="#platforms">支持平台</a>
+                <a href="#benefits">为何选择</a>
                 <a href="#download">下载</a>
             </div>
         </nav>
@@ -408,18 +462,17 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Smart Form Filler</h1>
-            <p class="subtitle">智能表单填充助手</p>
+            <h1>Auto Login Pro</h1>
+            <p class="subtitle">智能自动登录助手 & 表单填充</p>
             <p class="description">
-                AI驱动的表单自动填充工具，智能识别字段类型，一键生成测试数据，
-                让Web开发和测试工作更高效、更便捷。
+                一键自动登录宝塔、阿里云、淘宝、微信等主流网站，AI 智能识别表单，本地安全存储账号密码，提升 80% 工作效率。告别繁琐的手动输入，实现一键秒登。
             </p>
             <div class="cta-buttons">
                 <a href="#download" class="btn btn-primary">
                     <span>🚀</span>
                     立即下载
                 </a>
-                <a href="#features" class="btn btn-secondary">
+                <a href="#highlights" class="btn btn-secondary">
                     <span>📖</span>
                     了解更多
                 </a>
@@ -427,120 +480,126 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
+    <!-- Highlights Section -->
+    <section id="highlights" class="features">
         <div class="container">
-            <h2 class="section-title">核心功能</h2>
+            <h2 class="section-title">核心亮点</h2>
+            <p class="section-subtitle">AI 驱动的智能体验，让工作更高效</p>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🤖</div>
-                    <h3>AI智能识别</h3>
-                    <p>自动识别表单字段类型，包括姓名、邮箱、电话、身份证等多种数据类型，无需手动配置。</p>
+                    <h3>AI 智能识别</h3>
+                    <p>采用先进的算法智能识别网页表单结构，准确判断账号、密码及各类输入框类型。</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3>一键快速填充</h3>
-                    <p>点击即可完成整个表单的填充，从传统的2-5分钟缩短到10-30秒，效率提升80%以上。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>数据格式准确</h3>
-                    <p>生成符合真实格式要求的测试数据，避免因格式错误导致的表单提交失败。</p>
+                    <h3>一键极速登录</h3>
+                    <p>预设账号密码，打开网页即可一键填充并自动登录，流程丝滑无感。</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔒</div>
-                    <h3>安全可靠</h3>
-                    <p>所有数据本地生成和存储，不上传到任何服务器，开源透明，保护用户隐私。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>全网站支持</h3>
-                    <p>支持所有网站的表单填充，包括企业网站、注册页面、后台系统等各种场景。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3>跨设备同步</h3>
-                    <p>支持Chrome账户同步，配置和数据可在多设备间同步，随时随地使用。</p>
+                    <h3>数据安全无忧</h3>
+                    <p>所有数据均采用加密技术存储于您浏览器的本地环境，我们承诺绝不上传任何个人敏感信息到云端。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How it works -->
-    <section id="how-it-works" class="how-it-works">
+    <!-- Supported Platforms -->
+    <section id="platforms" class="platforms">
         <div class="container">
-            <h2 class="section-title">使用方法</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>安装扩展</h3>
-                    <p>从Chrome网上应用店安装Smart Form Filler扩展程序</p>
+            <h2 class="section-title">支持平台</h2>
+            <p class="section-subtitle">持续更新中，通用登录功能适配 99% 的网页表单</p>
+            <div class="platforms-grid">
+                <div class="platform-category">
+                    <h3>💻 运维开发</h3>
+                    <ul class="platform-list">
+                        <li>宝塔面板 (BT Panel)</li>
+                        <li>阿里云 (主账号 & RAM 子账号)</li>
+                        <li>声网 (Agora)</li>
+                    </ul>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>打开表单页面</h3>
-                    <p>访问任何包含表单的网页，如注册页面、联系表单等</p>
+                <div class="platform-category">
+                    <h3>🏢 办公与管理</h3>
+                    <ul class="platform-list">
+                        <li>微信公众平台</li>
+                        <li>微信开放平台</li>
+                        <li>计算机职业技术资格网</li>
+                    </ul>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>点击扩展图标</h3>
-                    <p>点击浏览器工具栏中的Smart Form Filler图标</p>
+                <div class="platform-category">
+                    <h3>🛍️ 电商与生活</h3>
+                    <ul class="platform-list">
+                        <li>淘宝网 (Taobao)</li>
+                        <li>QQ 邮箱</li>
+                        <li>网易邮箱 (163/126)</li>
+                    </ul>
                 </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>一键填充</h3>
-                    <p>AI自动识别表单字段并生成相应数据，一键完成填充</p>
+                <div class="platform-category">
+                    <h3>🎨 设计与工具</h3>
+                    <ul class="platform-list">
+                        <li>阿里图标库 (Iconfont)</li>
+                        <li>Educast AI</li>
+                        <li>更多自定义网站...</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits -->
+    <!-- Benefits Section -->
     <section id="benefits" class="benefits">
         <div class="container">
-            <h2 class="section-title">为什么选择我们</h2>
+            <h2 class="section-title">为什么选择 Auto Login Pro？</h2>
             <div class="benefits-grid">
                 <div class="benefit-item">
                     <div class="benefit-icon">⏱️</div>
                     <div class="benefit-content">
-                        <h4>节省大量时间</h4>
-                        <p>效率提升80%以上，告别重复性手动输入，让您专注于更重要的工作</p>
+                        <h4>效率革命</h4>
+                        <p>每天节省重复输入账号密码的时间，综合效率提升 80%，让您专注于更重要的工作。</p>
                     </div>
                 </div>
                 <div class="benefit-item">
                     <div class="benefit-icon">✅</div>
                     <div class="benefit-content">
-                        <h4>提高数据质量</h4>
-                        <p>生成的数据符合真实格式要求，大幅降低因格式错误导致的提交失败</p>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">🧠</div>
-                    <div class="benefit-content">
-                        <h4>智能化体验</h4>
-                        <p>AI驱动的字段识别，无需手动配置，智能适应各种表单结构</p>
+                        <h4>零错误率</h4>
+                        <p>自动填充避免了手动输入可能产生的拼写错误，生成真实格式的测试数据。</p>
                     </div>
                 </div>
                 <div class="benefit-item">
                     <div class="benefit-icon">🛡️</div>
                     <div class="benefit-content">
-                        <h4>隐私保护</h4>
-                        <p>所有数据本地处理，不上传到任何服务器，确保您的隐私安全</p>
+                        <h4>安全第一</h4>
+                        <p>坚持“数据本地化”原则，您的密码只属于您自己，杜绝云端泄露风险。</p>
                     </div>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">🔧</div>
+                    <div class="benefit-icon">🧠</div>
                     <div class="benefit-content">
-                        <h4>专业工具</h4>
-                        <p>专为Web开发者和测试人员设计，提供专业级的表单填充解决方案</p>
+                        <h4>智能便捷</h4>
+                        <p>无需繁琐配置，插件自动感知当前页面，智能推荐填充内容，即装即用。</p>
                     </div>
                 </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon">🔄</div>
-                    <div class="benefit-content">
-                        <h4>持续更新</h4>
-                        <p>定期更新算法和功能，不断优化用户体验，新增更多数据类型支持</p>
-                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Features -->
+    <section class="more-features">
+        <div class="container">
+            <h2 class="section-title">更多功能</h2>
+            <div class="more-features-grid">
+                <div class="more-feature-card">
+                    <h3>🎲 智能数据生成</h3>
+                    <p>内置姓名、手机号、邮箱、身份证、地址等多种真实数据的生成器，前端开发和测试人员的神器。</p>
+                </div>
+                <div class="more-feature-card">
+                    <h3>👥 多账号管理</h3>
+                    <p>支持同一网站管理多个账号，一键切换，轻松管理工作与生活。</p>
+                </div>
+                <div class="more-feature-card">
+                    <h3>🏷️ 自定义标签</h3>
+                    <p>为您的站点添加颜色标签（如：测试服、正式服），管理井井有条。</p>
                 </div>
             </div>
         </div>
@@ -550,13 +609,13 @@
     <section id="download" class="cta-section">
         <div class="container">
             <h2>立即开始使用</h2>
-            <p>加入数万开发者的选择，让表单填写不再繁琐</p>
+            <p>加入数万用户的选择，让登录变得简单</p>
             <div class="cta-buttons">
                 <a href="https://chrome.google.com/webstore" class="btn btn-primary">
                     <span>🚀</span>
                     Chrome商店下载
                 </a>
-                <a href="https://github.com" class="btn btn-secondary">
+                <a href="https://github.com/daichongdev/auto-login-pro" class="btn btn-secondary">
                     <span>📂</span>
                     查看源码
                 </a>
@@ -569,18 +628,17 @@
         <div class="container">
             <div class="footer-content">
                 <div class="logo">
-                    <div class="logo-icon">✨</div>
-                    <span>Smart Form Filler</span>
+                    <div class="logo-icon"></div>
+                    <span>Auto Login Pro</span>
                 </div>
                 <div class="footer-links">
-                    <a href="#privacy">隐私政策</a>
-                    <a href="#terms">使用条款</a>
-                    <a href="#support">技术支持</a>
-                    <a href="#contact">联系我们</a>
+                    <a href="privacy-policy.html">隐私政策</a>
+                    <a href="terms-of-service.html">使用条款</a>
+                    <a href="mailto:support@autologinpro.com">联系我们</a>
                 </div>
             </div>
             <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #374151; color: #9ca3af;">
-                <p>&copy; 2024 Smart Form Filler. 让表单填写更智能，工作效率更高效。</p>
+                <p>&copy; 2024 Auto Login Pro. 保留所有权利。</p>
             </div>
         </div>
     </footer>
@@ -627,7 +685,7 @@
         }, observerOptions);
 
         // 为所有卡片添加动画
-        document.querySelectorAll('.feature-card, .step, .benefit-item').forEach(el => {
+        document.querySelectorAll('.feature-card, .platform-category, .benefit-item, .more-feature-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
